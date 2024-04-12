@@ -1,0 +1,22 @@
+.envio-gratis {
+  color: green;
+}
+
+.envio-pago {
+  color: orange;
+}
+
+.instrumento-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.instrumento-item {
+  font-family: Proxima Nova, -apple-system, Roboto, Arial, sans-serif;
+  display: flex;
+  align-items: center;
+}
+
+.instrumento-info {
+  margin-left: 50px; 
+}
