@@ -20,3 +20,27 @@
 .instrumento-info {
   margin-left: 50px; 
 }
+
+.detalle-producto-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.detalle-producto-info {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.detalle-producto-imagen {
+  margin-right: 20px;
+}
+
+.detalle-producto-imagen img {
+  width: 200px; /* Ajusta el tamaño de la imagen según tu preferencia */
+  height: auto;
+}
+
+.detalle-producto-descripcion {
+  margin-top: 20px;
+}

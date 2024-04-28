@@ -1,6 +1,8 @@
 import {useState, useEffect} from 'react'
 import { FiTruck } from "react-icons/fi";
-import '../styles/instrumento.css'
+import '../../styles/instrumento.css';
+import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 
 const InstrumentoList = () => {
   const [instrumentos, setInstrumentos] = useState([])
@@ -29,8 +31,13 @@ const InstrumentoList = () => {
               ) : (
                 `Costo de envío interior de Argentina: $${instrumento.costoEnvio}`
               )}
-            </p>
+            </p >
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
               <p>{`${instrumento.cantidadVendida} vendidos` }</p>
+              <Link to={`/detalle/${instrumento.id}`}>
+                <Button variant="outline-success">Ver Detalle</Button>
+              </Link>
+            </div>
           <hr />
           </div>
         </div>
