@@ -44,3 +44,13 @@
 .detalle-producto-descripcion {
   margin-top: 20px;
 }
+
+.abm-producto-buttons-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px; /* Ajusta el espacio entre los botones según sea necesario */
+}
+
+.abm-producto-buttons-container > button {
+  margin-left: 10px; /* Ajusta el espacio entre los botones según sea necesario */
+}

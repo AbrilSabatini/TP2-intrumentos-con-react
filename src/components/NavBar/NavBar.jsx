@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom"
 import '../../styles/NavBar.css'
+import Button from 'react-bootstrap/Button';
 
 const NavBar = () => {
   const location = useLocation()
@@ -15,6 +16,9 @@ const NavBar = () => {
       </Link>
       <Link to="/productos" style={{ textDecoration: "none", color: location.pathname === '/productos' ? 'black' : 'grey' }} className="links">
         Productos
+      </Link>
+      <Link to={`/anadirProducto`}>
+         <Button variant="light">Añadir Producto</Button>
       </Link>
     </div>
 

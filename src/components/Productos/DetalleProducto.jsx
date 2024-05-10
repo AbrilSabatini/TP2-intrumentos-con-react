@@ -1,21 +1,32 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import '../../styles/instrumento.css';
-import { FiTruck } from "react-icons/fi";
+import { FiTruck } from 'react-icons/fi';
+import Button from 'react-bootstrap/Button';
 
 const DetalleProducto = () => {
   const [instrumento, setInstrumento] = useState(null);
   const { id } = useParams(); 
 
   useEffect(() => {
-    fetch("/instrumentos/instrumentos.json")
+    fetch(`http://localhost:8080/instrumentos/${id}`)
       .then(response => response.json())
-      .then(data => {
-        const instrumentoEncontrado = data.instrumentos.find(item => item.id === id);
-        setInstrumento(instrumentoEncontrado);
-      })
-      .catch(error => console.error('Error al cargar los instrumentos:', error));
+      .then(data => setInstrumento(data))
+      .catch(error => console.error('Error al cargar el instrumento:', error));
   }, [id]);
+
+
+  const handleDelete = () => {
+    if (window.confirm('¿Estás seguro que quieres eliminar este producto?')) {
+      fetch(`http://localhost:8080/instrumentos/${id}`, {
+        method: 'DELETE'
+      })
+      .then(() => {
+        history.push('/productos');
+      })
+      .catch(error => console.error('Error al eliminar el instrumento:', error));
+    }
+  };
 
   if (!instrumento) {
     return <div>Cargando...</div>;
@@ -32,8 +43,11 @@ const DetalleProducto = () => {
           <p>Precio: $ {instrumento.precio}</p>
           <p>Marca: {instrumento.marca}</p>
           <p>Modelo: {instrumento.modelo}</p>
-          <p className={instrumento.costoEnvio === "G" ? "envio-gratis" : "envio-pago"}>
-            {instrumento.costoEnvio === "G" ? (
+          {instrumento.idCategoria && (
+            <p>Categoría: {instrumento.idCategoria.denominacion}</p>
+          )}
+          <p className={instrumento.costoEnvio === 'G' ? 'envio-gratis' : 'envio-pago'}>
+            {instrumento.costoEnvio === 'G' ? (
               <>
                 <FiTruck /> Envío gratis a todo el país
               </>
@@ -47,8 +61,17 @@ const DetalleProducto = () => {
         <h3>Descripción</h3>
         <p>{instrumento.descripcion}</p>
       </div>
+      <div className="abm-producto-buttons">
+        <div className="abm-producto-buttons-container">
+          <Button variant="danger" onClick={handleDelete}>Eliminar</Button>
+          <div style={{ marginLeft: '10px' }} /> 
+          <Link to={`/editar/${instrumento.id}`}>
+            <Button variant="primary">Editar</Button>
+          </Link>
+        </div>
+      </div>
     </div>
   );
-}
+};
 
 export default DetalleProducto;
