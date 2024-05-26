@@ -1,0 +1,84 @@
+/* Estilos para el contenedor principal de instrumentos y carrito */
+.instrumento-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Divide en dos columnas */
+  gap: 20px; /* Espacio entre las columnas */
+}
+
+/* Estilos para el contenedor del carrito de compras */
+.shopping-cart-container {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  background-color: #f1f1f1;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+/* Estilos para la lista de ítems del carrito */
+.cart-items {
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 10px; /* Añade un poco de espacio para evitar el desplazamiento horizontal */
+}
+
+/* Estilos para cada ítem del carrito */
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+}
+
+/* Estilos para la información de cada ítem */
+.item-info {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Estilos para el total del carrito */
+.cart-total {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+/* Estilos para los botones del carrito */
+.cart-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+/* Estilos para el botón de limpiar carrito */
+.clear-cart-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.clear-cart-button:hover {
+  background-color: #c82333;
+}
+
+/* Estilos para el botón de checkout */
+.checkout-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.checkout-button:hover {
+  background-color: #0056b3;
+}
